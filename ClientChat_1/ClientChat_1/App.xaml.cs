@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using ClientChat_1.Pages;
 
 namespace ClientChat_1
 {
@@ -11,7 +12,8 @@ namespace ClientChat_1
             InitializeComponent();
 
             var managers = new Managers.Managers();
-            MainPage = new MainPage(managers.NetworkManager);
+            Managers.PageManager.Configure(managers);
+            MainPage = new NavigationPage(Managers.PageManager.Pages[CommonTypes.PageTypes.Auth]);
         }
 
         protected override void OnStart()

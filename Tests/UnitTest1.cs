@@ -13,7 +13,7 @@ namespace Tests
         public void JsonSerializing_LoginMessage_String()
         {
             string message = "{\"Login\":\"vasya\",\"Password\":\"ivanov\"}";
-            string reqMessage = new JsonDecoder().Serialize(new AuthorizeMessage { Login = "vasya", Password = "ivanov" });
+            string reqMessage = new JsonDecoder().Serialize(new AuthMessage { Login = "vasya", Password = "ivanov" });
             Assert.AreEqual(message, reqMessage);
         }
 
@@ -21,7 +21,7 @@ namespace Tests
         public void JsonSerializing_LoginMessageEmptyPassword_String()
         {
             string message = "{\"Login\":\"vasya\",\"Password\":null}";
-            string reqMessage = new JsonDecoder().Serialize(new AuthorizeMessage { Login = "vasya"});
+            string reqMessage = new JsonDecoder().Serialize(new AuthMessage { Login = "vasya"});
             Assert.AreEqual(message, reqMessage);
         }
 
@@ -29,7 +29,7 @@ namespace Tests
         public void JsonSerializing_LoginMessageEmpty_String()
         {
             string message = "{\"Login\":null,\"Password\":null}";
-            string reqMessage = new JsonDecoder().Serialize(new AuthorizeMessage());
+            string reqMessage = new JsonDecoder().Serialize(new AuthMessage());
             Assert.AreEqual(message, reqMessage);
         }
 
@@ -38,8 +38,8 @@ namespace Tests
         {
             Assert.DoesNotThrow(() => Task.Run(() =>
             {
-                new NetworkManager().Authorize(
-                  new AuthorizeMessage
+                new NetworkManager().Login(
+                  new AuthMessage
                   {
                       Login = "va",
                       Password = "pas"

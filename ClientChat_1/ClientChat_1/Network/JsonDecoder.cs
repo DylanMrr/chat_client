@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json;
 using ClientChat_1.Messages;
+using ClientChat_1.Messages.Responses;
 
 namespace ClientChat_1.Network
 {
@@ -10,7 +11,8 @@ namespace ClientChat_1.Network
     {
         private readonly Dictionary<string, Func<string, IMessage>> deserializedMessage = new Dictionary<string, Func<string, IMessage>>()
         {
-
+            [MessagesTypes.LoginResponse] = new Func<string, IMessage>(LoginResponse),
+            [MessagesTypes.MessagesModel] = new Func<string, IMessage>(MessagesModel)
         };
 
         public string Serialize<T>(T request) where T : IMessage
@@ -18,12 +20,19 @@ namespace ClientChat_1.Network
             return JsonConvert.SerializeObject(request);
         }
 
-        /*public T Deserialized<T>(string response, string type = "") where T : IMessage
+        public T Deserialize<T>(string response, string type) where T : IMessage
         {
-            if (type == "")
-            {
-                
-            }
-        }*/
+            return (T)deserializedMessage[type].Invoke(response);
+        }
+
+        private static AuthResponse LoginResponse(string response)
+        {
+            return JsonConvert.DeserializeObject<AuthResponse>(response);
+        }
+
+        private static Models.MessagesModel MessagesModel(string response)
+        {
+            return JsonConvert.DeserializeObject<Models.MessagesModel>(response);
+        }
     }
 }
