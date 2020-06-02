@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="ClientChat_1.Pages.MainPage">
 	<ContentPage.Content>
-		<StackLayout>
+		<RelativeLayout>
 			<Label Text="Message history is empty"
                 x:Name="emptyHistory"
 				IsEnabled="False"/>
@@ -25,8 +25,14 @@
 							</ViewCell.View>
 						</ViewCell>
 					</DataTemplate>
-					</ListView.ItemTemplate>
-				</ListView>
-		</StackLayout>
+				</ListView.ItemTemplate>
+			</ListView>
+			<!--<ImageButton Source="AddContactImage.png"
+					 HorizontalOptions="End"
+					 VerticalOptions="End" 
+					 x:Name="addContactButton"
+					 Clicked="OnAddContactClick"
+					 />-->
+		</RelativeLayout>
 	</ContentPage.Content>
 </ContentPage>

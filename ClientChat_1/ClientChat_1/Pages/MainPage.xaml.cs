@@ -40,7 +40,7 @@ namespace ClientChat_1.Pages
             {
                 emptyHistory.IsEnabled = true;
                 //todo убрать это, это для тестов
-                for (int i = 0; i < 2; i++)
+                for (int i = 0; i < 20; i++)
                 {
                     MessagesObjects.Add(
                         new MessageView()
@@ -67,6 +67,11 @@ namespace ClientChat_1.Pages
                 }
                 BindingContext = this;
             }
+        }
+
+        private async void OnAddContactClick(object sender, EventArgs e)
+        {
+
         }
 
         protected override bool OnBackButtonPressed()

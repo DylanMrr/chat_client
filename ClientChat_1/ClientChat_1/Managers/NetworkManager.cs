@@ -45,6 +45,11 @@ namespace ClientChat_1.Managers
             return response;
         }
 
+        public async Task GetContacts()
+        {
+
+        }
+
         public async Task<RegisterResponse> Register(RegisterMessage authorizeMessage)
         {
             var result = await HttpNetworkService.Post(

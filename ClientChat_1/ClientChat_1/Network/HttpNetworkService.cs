@@ -30,24 +30,16 @@ namespace ClientChat_1.Network
         //todo исправить
         public async Task<HttpRequestResult> Get(string uri, string authToken)
         {
-            int responseCode = 0;
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
-            request.Method = "GET";
-
-            request.Headers.Add("JWT", authToken);
-                
-            string responseMessage = await Task.Run(async () =>
+            using (var client = new HttpClient())
             {
-                using (HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync())
-                using (Stream stream = response.GetResponseStream())
-                using (StreamReader reader = new StreamReader(stream))
-                {
-                    responseCode = (int)response.StatusCode;
-                    return await reader.ReadToEndAsync();
-                }
-            });
+                if (!string.IsNullOrEmpty(authToken))
+                    client.DefaultRequestHeaders.Add("JWT", authToken);
 
-            return new HttpRequestResult(responseCode, responseMessage);
+                var response = await client.GetAsync(uri);
+                string result = response.Content.ReadAsStringAsync().Result;
+                var code = response.StatusCode;
+                return new HttpRequestResult((int)code, result);
+            }
         }
 
     }

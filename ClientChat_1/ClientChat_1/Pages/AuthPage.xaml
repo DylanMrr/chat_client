@@ -4,22 +4,56 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="ClientChat_1.Pages.AuthPage">
-    <ContentPage.Content>
-		<StackLayout>
-			<Entry Placeholder="Enter login"
-			   x:Name="loginEntry"/>
-			<Entry Placeholder="Enter password" 
+             x:Class="ClientChat_1.Pages.AuthPage"
+			 BackgroundColor="#EE895D">
+	<ContentPage.Content>
+		<StackLayout
+			Padding="50, 140, 50, 0">
+			<Label Text="ВХОД" 
+				   TextColor="White"
+				   FontFamily="Roboto"
+				   FontAttributes="Bold"
+				   FontSize="40"
+				   HorizontalOptions="Center"
+				   Margin="0,0,0,50"/>
+			<Entry Placeholder="Логин"
+				x:Name="loginEntry"
+				   FontFamily="Roboto"
+					FontSize="20"
+				   BackgroundColor="#FEC9B2"
+				   TextColor="White"
+				   PlaceholderColor="White"
+				   Margin="0,0,0,15"/>
+			<Entry Placeholder="Пароль" 
 			   IsPassword="True"
-			   x:Name="passwordEntry"/>
+			   x:Name="passwordEntry"
+				   FontFamily="Roboto"
+					FontSize="20"
+				   BackgroundColor="#FEC9B2"
+				   TextColor="White"
+				   PlaceholderColor="White"
+				   Margin="0,0,0,30"/>
 			<Button Text="Войти" 
 				x:Name="authButton"
-				Clicked="OnAuthButtonClick"/>
+				Clicked="OnAuthButtonClick"
+				BackgroundColor="White"
+					FontFamily="Roboto"
+					TextColor="#EE895D"
+					FontAttributes="Bold"
+					FontSize="20"/>
 			<Label x:Name="ErrorLabel"
-				   IsEnabled="False"/>
+				   IsEnabled="False"
+				   Margin="0,0,0,7"/>
 			<Button Text="Регистрация" 
 				x:Name="registerButton"
-				Clicked="OnRegisterButtonClick"/>
+				Clicked="OnRegisterButtonClick"
+					BackgroundColor="#EE895D"
+					BorderColor="White"
+					BorderWidth="2"
+					FontFamily="Roboto"
+					TextColor="White"
+					FontAttributes="Bold"
+					FontSize="20"/>
 		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

@@ -8,7 +8,7 @@ namespace ClientChat_1.Configs
     {
         public const string LobbyProtocol = "http://";
         public const string WebsocketProtocol = "ws://";
-        public const string MasterAdress = "192.168.0.102:";
+        public const string MasterAdress = "192.168.0.101:";
         //public const string MasterAdress = "localhost:";
         public const string ServerPort = "8888";
 
